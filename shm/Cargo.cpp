@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+Cargo::Cargo(std::string n = "", size_t a = 0, size_t bp = 0)
+    : name_(n), amount_(a), basePrice_(bp){};
+
 Cargo& Cargo::operator+=(size_t amount) {
     amount_ += amount;
     return *this;
