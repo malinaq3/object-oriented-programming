@@ -2,7 +2,7 @@
 
 class Coordinates {
 public:
-    Coordinates() = default;
+    Coordinates();
     Coordinates(size_t positionX, size_t positionY);
     bool operator==(const Coordinates& coor) const;
 
