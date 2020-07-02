@@ -14,9 +14,9 @@ public:
         : Cargo(name, amount, basePrice), rairty_(rarity) {}
 
     size_t getPrice() const override;
-    std::string getName() const override;
-    size_t getAmount() const override;
-    size_t getBasePrice() const override;
+    std::string getName() const override { return name_; }
+    size_t getAmount() const override { return amount_; }
+    size_t getBasePrice() const override { return basePrice_; }
     Rarity getRarity() const;
 
     bool operator==(const Cargo& item) const;

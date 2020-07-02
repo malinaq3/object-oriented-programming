@@ -4,17 +4,6 @@ size_t Item::getPrice() const {
     return basePrice_ * static_cast<size_t>(rairty_);
 }
 
-std::string Item::getName() const {
-    return name_;
-}
-
-size_t Item::getAmount() const {
-    return amount_;
-}
-
-size_t Item::getBasePrice() const {
-    return basePrice_;
-}
 Item::Rarity Item::getRarity() const {
     return rairty_;
 }
