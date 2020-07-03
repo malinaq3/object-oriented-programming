@@ -16,6 +16,7 @@ public:
     Cargo& operator-=(size_t amount);
     bool operator==(const Cargo& checkCargo) const;
 
+    //override from Observer
     virtual void nextDay() override;
 
 protected:

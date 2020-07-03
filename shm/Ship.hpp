@@ -4,8 +4,9 @@
 #include <vector>
 
 #include "Cargo.hpp"
+#include "Observer.hpp"
 
-class Ship {
+class Ship : public Observer {
 public:
     Ship();
     Ship(int capacity, int maxCrew, int speed, const std::string& name, size_t id);
@@ -36,6 +37,8 @@ public:
     std::vector<Cargo> getCargo() const {
         return cargo_;
     }
+    //override from Observer.hpp
+    void nextDay() override;
 
 private:
     size_t capacity_;
