@@ -2,7 +2,9 @@
 
 #include <string>
 
-class Cargo {
+#include "Observer.hpp"
+
+class Cargo : public Observer {
 public:
     Cargo(std::string n = "", size_t a = 0, size_t bp = 0);
 
@@ -13,6 +15,9 @@ public:
     Cargo& operator+=(size_t amount);
     Cargo& operator-=(size_t amount);
     bool operator==(const Cargo& checkCargo) const;
+
+    //override from Observer
+    virtual void nextDay() override;
 
 protected:
     std::string name_;
