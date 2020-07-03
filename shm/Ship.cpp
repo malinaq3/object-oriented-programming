@@ -48,7 +48,7 @@ void Ship::Unload(Cargo *cargo) {
         cargo_.erase(found);
     }
     else{
-        (*found)->setAmout((*found)->getAmount() - cargo->getAmount());
+        (*found)->setAmount((*found)->getAmount() - cargo->getAmount());
     }
 }
 

@@ -49,6 +49,7 @@ Response Store::sell(Cargo *cargo, Player *player) {
     }
     if(indexIt->get()->getAmount() == cargo->getAmount()) {
         player->getShip()->getCargo().erase(indexIt);
+        player->setMoney(player->getMoney() + cargo->getAmount() * cargo->getPrice());
     }
 
      return Response::done;
