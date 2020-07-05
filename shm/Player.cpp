@@ -11,6 +11,14 @@ Cargo* Player::getCargo(size_t index) const {
     }
     return &ship_->getCargo()[index];
 }
+//Override from Delegate
+void Player::payCrew(size_t money) {
+    if (money_ < money) {
+        std::cerr << "No maney for papays!\n";
+        return;
+    }
+    money_ -= money;
+}
 
 void Player::countAvailableSpace() {
     auto amoutOfCargo = ship_->getCargo().size();

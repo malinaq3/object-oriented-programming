@@ -5,7 +5,7 @@
 #include "Cargo.hpp"
 #include "Ship.hpp"
 
-class Player {
+class Player : public Delegate {
 public:
     Player(std::shared_ptr<Ship> s = nullptr, size_t m = 0, size_t as = 0);
 
@@ -15,6 +15,8 @@ public:
 
     size_t getSpeed() const { return ship_->getSpeed(); }
     Cargo* getCargo(size_t index) const;
+    //Override from Delegate
+    void payCrew(size_t money) override;
 
 private:
     std::shared_ptr<Ship> ship_;

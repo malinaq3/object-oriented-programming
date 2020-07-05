@@ -32,3 +32,8 @@ Ship& Ship::operator+=(size_t num) {
     crew_ += num;
     return *this;
 }
+void Ship::nextDay() {
+    size_t crewCost = 1;
+    payCrew->payCrew(crew_ * crewCost);
+}
+
