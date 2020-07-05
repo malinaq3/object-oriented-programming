@@ -4,15 +4,27 @@
 #include <vector>
 
 #include "Cargo.hpp"
+#include "Delegate.hpp"
 
 class Ship {
 public:
     Ship();
-    Ship(int capacity, int maxCrew, int speed, const std::string& name, size_t id);
-    Ship(int maxCrew, int speed, size_t id);
+    Ship(int capacity,
+         int maxCrew,
+         int speed,
+         const std::string& name,
+         size_t id,
+         Delegate* delegate = nullptr);
+
+    Ship(int maxCrew,
+         int speed,
+         size_t id,
+         Delegate* delegate = nullptr);
 
     Ship& operator-=(size_t num);
     Ship& operator+=(size_t num);
+
+    void nextDay();
 
     void setName(const std::string& name) {
         name_ = name;
@@ -36,6 +48,7 @@ public:
     std::vector<Cargo> getCargo() const {
         return cargo_;
     }
+    void setDelegate(Delegate* delegate) {payCrew = delegate; }
 
 private:
     size_t capacity_;
@@ -45,4 +58,5 @@ private:
     std::string name_;
     const size_t id_;
     std::vector<Cargo> cargo_;
+    Delegate* payCrew;
 };
