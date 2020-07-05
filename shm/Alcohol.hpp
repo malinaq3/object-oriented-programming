@@ -4,20 +4,20 @@
 
 class Alcohol : public Cargo {
 public:
-    Alcohol::Alcohol(const std::string& name,
-                     size_t amount,
-                     size_t basePrice,
-                     size_t percentage)
-        : Cargo(name, amount, basePrice), percentage_(percentage) {}
+    Alcohol(std::string name,
+            size_t amount,
+            size_t basePrice,
+            size_t percentage);
 
-    Cargo& operator+=(size_t amount) override;
-    Cargo& operator-=(size_t amount) override;
-    bool operator==(const Cargo& other) const override;
+    ~Alcohol() = default;
 
+    size_t getPercentage() const;
+
+    //Override from Cargo
     size_t getPrice() const override;
-    std::string getName() const override { return name_; }
-    size_t getAmount() const override { return amount_; }
-    size_t getBasePrice() const override { return basePrice_; }
+    std::string getName() const override;
+    size_t getAmount() const override;
+    size_t getBasePrice() const override;
 
 private:
     const size_t max_percentage_{96};

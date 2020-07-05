@@ -1,20 +1,26 @@
 #include "Alcohol.hpp"
 
+Alcohol::Alcohol(std::string name,
+                 size_t amount,
+                 size_t basePrice,
+                 size_t percentage)
+    : Cargo(name, amount, basePrice),
+      percentage_(percentage) {}
+
+size_t Alcohol::getPercentage() const {
+    return percentage_;
+}
+
+//Override from Cargo
 size_t Alcohol::getPrice() const {
     return static_cast<size_t>(basePrice_ * (float(percentage_)) / max_percentage_);
 }
-
-Cargo& Alcohol::operator+=(size_t amount) {
-    amount_ += amount;
-    return *this;
+std::string Alcohol::getName() const {
+    return name_;
 }
-
-Cargo& Alcohol::operator-=(size_t amount) {
-    if (amount_ <= amount) {
-        amount_ = 0;
-    } else {
-        amount_ -= amount;
-    }
-
-    return *this;
+size_t Alcohol::getAmount() const {
+    return amount_;
+}
+size_t Alcohol::getBasePrice() const {
+    return basePrice_;
 }

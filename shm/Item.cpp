@@ -1,45 +1,26 @@
 #include "Item.hpp"
 
-size_t Item::getPrice() const {
-    return basePrice_ * static_cast<size_t>(rairty_);
-}
+Item::Item(const std::string name,
+           size_t amount,
+           size_t basePrice,
+           Rarity rarity)
+    : Cargo(name, amount, basePrice),
+      rairty_(rarity) {}
 
-Item::Rarity Item::getRarity() const {
+Rarity Item::getRarity() const {
     return rairty_;
 }
 
-Cargo& Item::operator+=(size_t amount) {
-    amount_ += amount;
-    return *this;
+//Override from Cargo
+size_t Item::getPrice() const {
+    return basePrice_ * static_cast<size_t>(rairty_);
 }
-
-Cargo& Item::operator-=(size_t amount) {
-    amount_ -= amount;
-    return *this;
+std::string Item::getName() const  { 
+        return name_; 
 }
-
-bool Item::operator==(const Cargo& item) const {
-    if (typeid(Item) == typeid(Cargo)) {
-    }
+size_t Item::getAmount() const  { 
+    return amount_; 
 }
-
-bool Item::operator==(const Cargo& cargo) const {
-    if (typeid(cargo) == typeid(Item)) {
-        const Item* rarity_ptr = static_cast<const Item*>(&cargo);
-        return name_ == rarity_ptr->getName() &&
-               amount_ == rarity_ptr->getAmount() &&
-               basePrice_ == rarity_ptr->getBasePrice() &&
-               rairty_ == rarity_ptr->getRarity();
-    }
-    return false;
-}
-bool Item::operator!=(const Cargo& cargo) const {
-    if (typeid(cargo) == typeid(Item)) {
-        const Item* rarity_ptr = static_cast<const Item*>(&cargo);
-        return name_ != rarity_ptr->getName() ||
-               amount_ != rarity_ptr->getAmount() ||
-               basePrice_ != rarity_ptr->getBasePrice() ||
-               rairty_ != rarity_ptr->getRarity();
-    }
-    return false;
+size_t Item::getBasePrice() const  { 
+    return basePrice_; 
 }
