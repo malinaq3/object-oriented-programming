@@ -24,3 +24,9 @@ size_t Alcohol::getAmount() const {
 size_t Alcohol::getBasePrice() const {
     return basePrice_;
 }
+void Alcohol::nextDay() {
+    if (percentage_ > 0) {
+        --percentage_;
+    }
+    amount_ = 0;
+}

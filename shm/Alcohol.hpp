@@ -18,7 +18,8 @@ public:
     std::string getName() const override;
     size_t getAmount() const override;
     size_t getBasePrice() const override;
-
+    void nextDay() override;
+    
 private:
     const size_t max_percentage_{96};
     size_t percentage_;

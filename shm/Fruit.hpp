@@ -23,6 +23,7 @@ public:
     std::string getName() const override;
     size_t getAmount() const override;
     size_t getBasePrice() const override;
+    void nextDay() override;
 
 private:
     size_t timeElapsed_{0};
