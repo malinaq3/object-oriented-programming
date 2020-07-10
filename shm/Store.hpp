@@ -10,6 +10,8 @@ class Store {
 public:
     Response buy(Cargo* cargo, Player* player);
     Response sell(Cargo* cargo, Player* player);
+    std::vector<std::shared_ptr<Cargo>>::iterator findCargo(Cargo* cargo);
+
 private:
     std::vector<std::shared_ptr<Cargo>> cargo_;
 };

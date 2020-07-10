@@ -48,7 +48,7 @@ void Ship::Unload(Cargo *cargo) {
         cargo_.erase(found);
     }
     else{
-        (*found)->setAmount((*found)->getAmount() - cargo->getAmount());
+        (*found)->setAmout((*found)->getAmount() - cargo->getAmount());
     }
 }
 
@@ -67,6 +67,12 @@ Ship& Ship::operator+=(size_t num) {
     }
     crew_ += num;
     return *this;
+}
+
+std::vector<std::shared_ptr<Cargo>>::iterator Ship::findCargo(Cargo* cargo) {
+    return std::find_if(cargo_.begin(), cargo_.end(), [cargo](const auto& cargoTmp){
+        return cargoTmp->getName() == (*cargo).getName();
+    });
 }
 
 size_t Ship::getCapacity() const {
@@ -89,6 +95,6 @@ std::shared_ptr<Cargo> Ship::getCargo(size_t index) const {
     return cargo_[index];
 }
 
-std::vector<std::shared_ptr<Cargo>> Ship::getCargo() const {
+std::vector<std::shared_ptr<Cargo>>& Ship::getCargo() {
     return cargo_;
 }
